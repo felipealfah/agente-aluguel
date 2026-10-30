@@ -1,0 +1,1 @@
+ALTER TABLE `listings` ADD `published_at` text;

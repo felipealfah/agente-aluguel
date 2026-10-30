@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Design system Full ED (docs/DESIGN.md) — tema somente dark. */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Tokens da marca */
+  --color-canvas-dark: #0b0c14;
+  --color-surface-card: #141624;
+  --color-surface-raised: #1b1e31;
+  --color-hairline: #262a40;
+  --color-brand-cyan: #2be4de;
+  --color-brand-blue: #4b7aec;
+  --color-brand-purple: #635bff;
+  --color-text-muted: #8e9aa8;
+  --color-state-go: #34d399;
+  --color-state-nogo: #f87171;
+  --color-state-warn: #fbbf24;
+  --color-state-info: #4b7aec;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
+  --font-heading: var(--font-outfit);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Tokens do shadcn apontando para a marca */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: 8px;
+  --radius-md: 12px; /* inputs */
+  --radius-lg: 12px;
+  --radius-xl: 16px; /* cards */
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+}
+
+:root {
+  color-scheme: dark;
+  --radius: 12px;
+  --background: #0b0c14;
+  --foreground: #ffffff;
+  --card: #141624;
+  --card-foreground: #ffffff;
+  --popover: #1b1e31;
+  --popover-foreground: #ffffff;
+  --primary: #2be4de;
+  --primary-foreground: #0b0c14;
+  --secondary: #1b1e31;
+  --secondary-foreground: #ffffff;
+  --muted: #1b1e31;
+  --muted-foreground: #8e9aa8;
+  --accent: #1b1e31;
+  --accent-foreground: #ffffff;
+  --destructive: #f87171;
+  --border: #262a40;
+  --input: #262a40;
+  --ring: #2be4de;
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(to right, var(--color-brand-cyan), var(--color-brand-blue));
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(to right, var(--color-brand-cyan), var(--color-brand-blue));
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground text-sm;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+}

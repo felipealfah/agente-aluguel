@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.local
+api/dist/
+api/data/*.db*
+.DS_Store
+.claude/
