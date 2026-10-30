@@ -1,8 +1,9 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { listUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
-import type { ListingSort } from "@/lib/types";
+import type { ListingSort, ResultTab } from "@/lib/types";
 
 const OPTIONS: { value: ListingSort; label: string }[] = [
   { value: "recentes", label: "Mais recentes" },
@@ -11,10 +12,11 @@ const OPTIONS: { value: ListingSort; label: string }[] = [
   { value: "preco_asc", label: "Menor preço" },
 ];
 
-/** Ordenação feita no servidor; a escolha fica na URL (?sort=) e sobrevive ao recarregar. */
-export function SortBar({ active }: { active: ListingSort }) {
+type Props = { active: ListingSort; tab: ResultTab; regions: string[] };
+
+/** Ordenação feita no servidor; a escolha fica na URL (?sort=) e preserva a aba e as regiões marcadas. */
+export function SortBar({ active, tab, regions }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
 
   return (
     <div role="radiogroup" aria-label="Ordenar imóveis" className="flex flex-wrap gap-1.5">
@@ -26,7 +28,7 @@ export function SortBar({ active }: { active: ListingSort }) {
             type="button"
             role="radio"
             aria-checked={selected}
-            onClick={() => router.replace(`${pathname}?sort=${value}`, { scroll: false })}
+            onClick={() => router.replace(listUrl({ tab, sort: value, regions }), { scroll: false })}
             className={cn(
               "h-8 rounded-full border px-3 text-xs transition-colors",
               selected

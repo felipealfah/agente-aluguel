@@ -38,6 +38,7 @@ export type SearchProfile = {
 export type Listing = {
   id: number;
   profileId: number | null;
+  agentRunId: number | null; // última busca que aprovou este imóvel
   source: string;
   url: string;
   title: string;
@@ -76,3 +77,7 @@ export type AgentRun = {
 
 export const listingSorts = ["match", "recentes", "preco_desc", "preco_asc"] as const;
 export type ListingSort = (typeof listingSorts)[number];
+
+/** "ultima" = só o que a última busca concluída aprovou; "todos" = tudo que já foi salvo. */
+export const resultTabs = ["ultima", "todos"] as const;
+export type ResultTab = (typeof resultTabs)[number];

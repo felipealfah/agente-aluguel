@@ -2,14 +2,14 @@ import { House } from "lucide-react";
 import type { Listing } from "@/lib/types";
 import { ListingCard } from "./listing-card";
 
-export function ListingGrid({ listings }: { listings: Listing[] }) {
+export function ListingGrid({ listings, emptyMessage }: { listings: Listing[]; emptyMessage?: string }) {
   if (listings.length === 0) {
     return (
       <div className="relative flex h-72 flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-hairline bg-surface-card text-center">
         <div className="absolute -top-6 -right-6 size-24 rounded-3xl bg-brand-cyan/80" />
         <div className="absolute -bottom-6 -left-6 size-24 rounded-3xl bg-brand-purple/80" />
         <House className="size-8 text-text-muted" />
-        <p className="text-text-muted">Nenhum imóvel ainda. Ajuste os filtros e clique em “Buscar com o agente”.</p>
+        <p className="text-text-muted">{emptyMessage ?? "Nenhum imóvel ainda. Ajuste os filtros e clique em “Buscar com o agente”."}</p>
       </div>
     );
   }

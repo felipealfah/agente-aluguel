@@ -125,7 +125,7 @@ Para parar, use `Ctrl+C` em cada terminal. Se você parar a API no meio de uma b
    - **Preço:** mínimo e máximo, com a opção de incluir o condomínio na conta. A "média desejada" e a porcentagem da renda comprometida são calculadas para você (opcional).
    - **Quartos e banheiros:** 0 a 5+, com seleção múltipla.
 2. Clique em **Buscar com o agente**. Os filtros são salvos e a busca começa.
-3. Quando terminar, os imóveis aparecem nos cards. Ordene com os botões do topo: **Mais recentes**, **Maior % match**, **Maior preço**, **Menor preço**. A escolha fica na URL (`?sort=…`).
+3. Quando terminar, o front abre a aba **Última busca**, só com o que essa busca aprovou. A aba **Todos os resultados** mostra tudo que já foi salvo, de todas as buscas. Nela, filtre por **região** (Guará, Vicente Pires…); dá para marcar mais de uma, e sem nenhuma marcada aparecem todas. Ordene com os botões do topo: **Mais recentes**, **Maior % match**, **Maior preço**, **Menor preço**. A escolha fica na URL (`?sort=…`).
 4. Cada card mostra a fonte, o match, a região, a data de publicação (quando a fonte informa), os cômodos, o preço total e, com Claude ativo, o motivo da aprovação. Clicar abre o anúncio original.
 
 Rodar a busca de novo **atualiza** os imóveis já conhecidos (pela URL) em vez de duplicá-los.

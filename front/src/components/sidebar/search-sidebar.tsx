@@ -1,7 +1,7 @@
 "use client";
 
 import { Bot, CircleAlert, CircleCheck, Loader2, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -29,6 +29,7 @@ type Props = { profile: SearchProfile; lastRun: AgentRun | null };
 
 export function SearchSidebar({ profile, lastRun }: Props) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [form, setForm] = useState(profile);
   const [regionDraft, setRegionDraft] = useState("");
   const [run, setRun] = useState(lastRun);
@@ -68,6 +69,10 @@ export function SearchSidebar({ profile, lastRun }: Props) {
       const started = await api.startAgentRun(id);
       setRun(started);
       setRun(await waitForRun(started.id));
+      // mostra o que a busca acabou de achar, mantendo a ordenação escolhida
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("tab", "ultima");
+      router.replace(`/?${params}`, { scroll: false });
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));

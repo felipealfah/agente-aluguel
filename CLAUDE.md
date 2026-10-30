@@ -24,3 +24,5 @@ Monorepo npm workspaces: `api/` (Hono + Drizzle + SQLite) e `front/` (Next.js 15
 - Requisitos: Node >= 22 (better-sqlite3 13).
 - `allowScripts` (package.json): NÃO autorizar `better-sqlite3` — ele traz binários prontos (`prebuilds/`); autorizar faz o npm rodar `node-gyp rebuild` e falhar sem Python. Validar mudanças de instalação com uma cópia limpa (só os arquivos não ignorados pelo git).
 - `front/.gitignore` ignora `.env*`, com exceção de `.env.example` (necessário para o passo de instalação).
+- Abas do front (`?tab=ultima|todos`): "Última busca" = imóveis cujo `agent_run_id` é o da última busca com status `success` (cada imóvel guarda a última busca que o aprovou, por causa do upsert); filtragem na página, sem endpoint novo. Sem `?tab=`, abre na última busca se existir.
+- Filtro de região (`?region=guara&region=vicente-pires`, só na aba "todos"): chaves via `regionKey` em `front/src/lib/regions.ts` (sem acento, minúscula); opções e contagens saem dos próprios imóveis; regiões desconhecidas na URL são ignoradas. Todos os links da lista passam por `listUrl` (`front/src/lib/url.ts`). A cidade é sempre Brasília (só DF), por isso não há filtro por cidade.
